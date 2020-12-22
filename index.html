@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style/style.css">
+    </head>
+
+    <body>
+        <main>
+            <header>
+                <h1 id="title">Восстановление множества опорной функции</h1>
+            </header>
+            <article class="block">
+                <section class="inputData">
+                    <h2 >Матрица</h2>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <p id="textMatrix">(</p>
+                        <div>
+                            <input class="inputMatrix" id="inputOne" type="text" placeholder="(1;1)" value="1"> 
+                            <input class="inputMatrix" id="inputTwo" type="text" placeholder="(1;2)" value="2">
+                            <br>
+                            <input class="inputMatrix" id="inputThree" type="text" placeholder="(2;1)" value="-1">
+                            <input class="inputMatrix" id="inputFour" type="text" placeholder="(2;2)" value="0">
+                        </div>
+                        <p id="textMatrix">)</p>
+                    </div>
+                    <br>
+                    <h2>Отрезок</h2>
+                    <div class="vector">
+                        <p id="textVector">(</p>
+                        <input class="inputVector" id="inputVectorOne" type="text" placeholder="от"  value="-2">
+                        <p id="textVector">;</p>
+                        <input class="inputVector" id="inputVectorTwo" type="text" placeholder="до"  value="3">
+                        <p id="textVector">)</p>
+                    </div>
+                    <br>
+                    <h2>Начальная точка</h2>
+                    <div>
+                        <input class="firstDot" id="firstDotX" type="text" placeholder="x0" value="1">
+                        <input class="firstDot" id="firstDotY" type="text" placeholder="y0" value="2">
+                    </div>
+                    <h2>Разбиение (количество точек в отрезке)</h2>
+                    <input class="point" id="firstDot" type="text" placeholder="N" value="32">
+                    <br>
+                    <br>
+                    <button class="create" onclick="pointplot()">Собрать</button>
+                </section>
+                <section class="result">
+
+                    <div style="width: 1000px; max-height: 1000px;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </section>
+            </article>
+            <footer>
+                <p id="place">Ижевск 2020</p>
+            </footer>
+        </main>
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://pagecdn.io/lib/mathjs/7.1.0/math.min.js" crossorigin="anonymous"  ></script>
+    <script src="js/lodash.js"></script>
+    <script src="js/main.js"></script>
+   
+</html>
