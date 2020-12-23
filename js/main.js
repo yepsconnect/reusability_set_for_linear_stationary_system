@@ -142,23 +142,31 @@ const ds = t/M
 
 function PSI(psi, s){
     const transposeMatrix = math.transpose(showMatrix())
-    const matrixExp = math.expm(transposeMatrix, t - s)
+    const matrix = math.multiply(transposeMatrix, t - s)
+    const matrixExp = math.expm(matrix)
     return math.multiply(matrixExp, psi)
 }
 
-// for (let i = 1; i < N; i++) {
-//     const psi = [Math.cos(((2 * Math.PI * i) / N) + 0.01), Math.sin(((2 * Math.PI * i) / N) + 0.01)]
-//     const D1 = math.multiply(math.expm(showMatrix(),t - t0), showVector())
+for (let i = 1; i < N; i++) {
+    const psi = [Math.cos(((2 * Math.PI * i) / N) + 0.01), Math.sin(((2 * Math.PI * i) / N) + 0.01)]
+    // const D1 = math.multiply(math.expm(showMatrix(),t - t0), showVector())
     
-//     for(let j = 1; j < N; j++){
-//         const p = math.re(PSI(psi, t0 + j * ds))
-//         const re = math.re(math.expm(showMatrix(),t - (t0 + j * ds)))
-//         const grad = C_analit_grad(p[0], p[1]) 
-//         const mulDs = math.multiply(re, grad) * ds 
-//         console.log(mulDs) 
-//     }
+    for(let j = 1; j < N; j++){
+        const p = math.re(PSI(psi, t0 + j * ds))
+        const At = math.multiply(showMatrix(), t - (t0 + j * ds))
+        
+        const exp = math.expm(At)
+        
+        const re = math.re(exp)
+        
+        const grad = C_analit_grad(p._data[0], p._data[1]) 
+        const gradDS = math.multiply(math.matrix(grad), ds)
+        const mulDs = math.multiply(re, gradDS)
 
-//     //const D2
-// }
+        console.log(mulDs) 
+    }
 
-math.expm([[-3,-1],[2,6]])
+    // const D2 = 
+}
+
+// console.log(math.expm())
