@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="style/style.css">
+        <title>Восстановление множества опорной функции</title>
     </head>
 
     <body>
@@ -32,27 +33,32 @@
                         <p id="textVector">)</p>
                     </div>
                     <br>
-                    <h2>Начальная точка</h2>
+                    <h2>Время</h2>
                     <div>
-                        <input class="firstDot" id="firstDotX" type="text" placeholder="x0" value="1">
-                        <input class="firstDot" id="firstDotY" type="text" placeholder="y0" value="2">
+                        <input class="firstDot" id="timeStart" type="text" placeholder="t0" value="0">
+                        <input class="firstDot" id="timeEnd" type="text" placeholder="t" value="1">
                     </div>
                     <h2>Разбиение (количество точек в отрезке)</h2>
                     <input class="point" id="firstDot" type="text" placeholder="N" value="32">
                     <br>
                     <br>
-                    <button class="create" onclick="pointplot()">Собрать</button>
+                    <button class="create" onclick=" plot2()">Собрать</button> 
+                    <!-- pointplot(), -->
                 </section>
                 <section class="result">
 
-                    <div style="width: 1000px; max-height: 1000px;">
+                    <!-- <div style="width: 1000px; max-height: 1000px;">
                         <canvas id="myChart"></canvas>
+                    </div> -->
+
+                    <div style="width: 1000px; max-height: 1000px;">
+                        <canvas id="myChart2"></canvas>
                     </div>
                 </section>
             </article>
-            <footer>
+            <!-- <footer>
                 <p id="place">Ижевск 2020</p>
-            </footer>
+            </footer> -->
         </main>
     </body>
     
