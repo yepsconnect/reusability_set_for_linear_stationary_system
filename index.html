@@ -11,54 +11,59 @@
             </header>
             <article class="block">
                 <section class="inputData">
-                    <h2 >Матрица</h2>
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <p id="textMatrix">(</p>
-                        <div>
-                            <input class="inputMatrix" id="inputOne" type="text" placeholder="(1;1)" value="1"> 
-                            <input class="inputMatrix" id="inputTwo" type="text" placeholder="(1;2)" value="2">
-                            <br>
-                            <input class="inputMatrix" id="inputThree" type="text" placeholder="(2;1)" value="-1">
-                            <input class="inputMatrix" id="inputFour" type="text" placeholder="(2;2)" value="0">
+                    <div class="box">
+                        <h2 >Матрица</h2>
+                        <div class="boxes">
+                            <div class="row">
+                                <input class="inputMatrix" id="inputOne" type="text" placeholder="(1;1)" value="1"> 
+                                <input class="inputMatrix" id="inputTwo" type="text" placeholder="(1;2)" value="2">
+                            </div>
+                            <div class="row">
+                                <input class="inputMatrix" id="inputThree" type="text" placeholder="(2;1)" value="-1">
+                                <input class="inputMatrix" id="inputFour" type="text" placeholder="(2;2)" value="0">    
+                            </div>
                         </div>
-                        <p id="textMatrix">)</p>
                     </div>
-                    <br>
-                    <h2>Отрезок</h2>
-                    <div class="vector">
-                        <p id="textVector">(</p>
-                        <input class="inputVector" id="inputVectorOne" type="text" placeholder="от"  value="-2">
-                        <p id="textVector">;</p>
-                        <input class="inputVector" id="inputVectorTwo" type="text" placeholder="до"  value="3">
-                        <p id="textVector">)</p>
+                    
+                    <div class="box">
+                        <h2>Отрезок</h2>
+                        <div class="row">
+                            <input class="inputVector" id="inputVectorOne" type="text" placeholder="от"  value="-2">
+                            <input class="inputVector" id="inputVectorTwo" type="text" placeholder="до"  value="3">
+                        </div>
                     </div>
-                    <br>
-                    <h2>Время</h2>
-                    <div>
-                        <input class="firstDot" id="timeStart" type="text" placeholder="t0" value="0">
-                        <input class="firstDot" id="timeEnd" type="text" placeholder="t" value="1">
+                    
+                    <div class="box">
+                        <h2>Время</h2>
+                        <div class="row">
+                            <input class="firstDot" id="timeStart" type="text" placeholder="t0" value="0">
+                            <input class="firstDot" id="timeEnd" type="text" placeholder="t" value="1">
+                        </div>
                     </div>
-                    <h2>Разбиение (количество точек в отрезке)</h2>
-                    <input class="point" id="firstDot" type="text" placeholder="N" value="32">
-                    <br>
-                    <br>
-                    <button class="create" onclick=" plot2()">Собрать</button> 
-                    <!-- pointplot(), -->
+                    <div class="box">
+                        <h2>Разбиение </h2>
+                        <div class="boxes">
+                            <input class="point" id="firstDot" type="text" placeholder="N" value="32">
+                        </div>
+                    </div>
+                    <!-- pointplot(),console.log(seq2); console.log(seq2[0][1]); -->
                 </section>
+                <button class="create" onclick=" plot2();  plot3()">Построить</button> 
                 <section class="result">
 
                     <!-- <div style="width: 1000px; max-height: 1000px;">
                         <canvas id="myChart"></canvas>
                     </div> -->
 
-                    <div style="width: 1000px; max-height: 1000px;">
+                    <div style="min-width: 50%">
                         <canvas id="myChart2"></canvas>
+                    </div>
+
+                    <div style="min-width: 50%">
+                        <canvas id="myChart3"></canvas>
                     </div>
                 </section>
             </article>
-            <!-- <footer>
-                <p id="place">Ижевск 2020</p>
-            </footer> -->
         </main>
     </body>
     

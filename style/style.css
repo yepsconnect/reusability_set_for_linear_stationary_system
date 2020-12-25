@@ -2,98 +2,63 @@ body {
     margin: 0 auto;
 }
 
-main{
-    margin: 0 auto;
-    height: 100%;
+#title {
+    text-align: center;
 }
 
-header{
-    margin: 0 auto;
-    height: 8%;
-}
-
-article{
-    margin: 0 auto;
-    height: 82%;
-}
-
-footer{
-    margin: 0 auto;
-    height: 8%;
-}
-
-.block {
+.block{
     display: flex;
-}
-
-.inputData{
-    display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-right: 2px solid black;
-    padding: 20px;
+    
 }
 
-/*   input data*/
-
-.inputMatrix{
-    width: 60px;
-    height: 60px;
-    text-align: center;
+.inputData {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
     justify-content: center;
-    font-size: 20px;
-} 
+    align-items: center;
+}
 
-.vector{
+.box {
+    width: 23%;
+    height: 200px;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxes{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.row {
     display: flex;
     flex-direction: row;
 }
 
-.inputVector{
-    width: 80px;
-    height: 40px;
-    text-align: center;
-    justify-content: center;
+input{
     font-size: 20px;
-}
-
-.firstDot{
-    width: 80px;
-    height: 40px;
     text-align: center;
-    justify-content: center;
-}
-
-.point{
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    justify-content: center;
+    width: 50px;
+    height: 50px;
 }
 
 .create{
-    width: 180px;
-    height: 40px;
-    text-align: center;
-    justify-content: center;
+    font-size: 20px;
+    height: 50px;
+    width: 50%;
 }
 
-
-/*   text   */
-#title{
-    text-align: center;
-}
-
-#place{
-    text-align: center;
-}
-
-#textMatrix{
-    font-size: 80px;
-    margin: 0 2px;
-}
-
-#textVector{
-    font-size: 40px;
-    margin: 0 2px;
+.result{
+    margin-top: 20px;
+    display: flex;
+    width: 90%;
 }
