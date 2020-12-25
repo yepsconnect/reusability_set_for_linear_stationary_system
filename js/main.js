@@ -1,6 +1,6 @@
 var chart = null
-let N = document.querySelector('#firstDot').value
-const t = 1
+const N = document.querySelector('#firstDot').value
+const t = Math.PI
 const t0 = 0
 const M = 75
 const ds = t/M
@@ -58,7 +58,7 @@ function PSI(psi, s){
 let seq2 = []
 
 function plot2() { 
-
+    const N = document.querySelector('#firstDot').value
     for (let i = 1; i < N; i++) {
         const DX = []
         const DY = []
@@ -92,7 +92,7 @@ function plot2() {
     var ctx2 = document.getElementById('myChart2').getContext('2d');
 
     chart = new Chart(ctx2, {
-        type: 'scatter',
+        type: 'bubble',
         data: {
             datasets: [{
                 data: seq2.map((x, y) => ({
@@ -119,7 +119,7 @@ function plot2() {
 
 function plot3() {
     const seq3 = [] 
-
+    const N = document.querySelector('#firstDot').value
     for (let i = 1; i < N; i++) {
         const psi = [Math.cos((2 * Math.PI * i) / N), Math.sin((2 * Math.PI * i) / N)]
         //console.log(psi)
