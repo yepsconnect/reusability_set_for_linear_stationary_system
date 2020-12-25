@@ -1,6 +1,6 @@
 var chart = null
 let N = document.querySelector('#firstDot').value
-const t = Math.PI
+const t = 1
 const t0 = 0
 const M = 75
 const ds = t/M
@@ -101,12 +101,15 @@ function plot2() {
 
                 })),
                 showLine: true,
-                label: 'A',
+                fill: false,
                 borderColor: 'rgb(0, 0, 0)',
                 }]
         },
 
         options: {
+            legend: {
+                display: false
+            },
             responsive: true,
         }
     });
@@ -176,7 +179,7 @@ function plot3() {
         
         const plots = []
 
-        for (let x = minX; x < maxX ; x += 0.9) {
+        for (let x = minX; x < maxX ; x += 10) {
             y = (DC - x * psi[0]) / psi[1]
             plots.push([x, y])
         }
@@ -196,12 +199,13 @@ function plot3() {
         type: 'scatter',
         data: {
             datasets: seq3.map(d => ( {
-                data: d.map((x, y) => ({
+                data: d.map((x) => ({
                     x: x[0],
                     y: x[1]
 
                 })),
                 showLine: true,
+                fill: false,
                 label: 'A',
                 borderColor: 'rgb(0, 0, 0)',
                 }))
@@ -209,7 +213,9 @@ function plot3() {
 
         options: {
             responsive: true,
-
+            legend: {
+                display: false
+            },
             scales: {
                 yAxes: [{
                     ticks: {
@@ -222,5 +228,3 @@ function plot3() {
         }
     });
 }
-
-plot3()
