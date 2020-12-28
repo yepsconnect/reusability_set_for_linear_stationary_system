@@ -1,6 +1,7 @@
 # Восстановление множества опорной функции 
-# Reacebilyte set for linear stationary system
 
 * Магистратура
 * 3 семестр
 * Предмет: Новые информационные технологии
+
+# Reacebilyte set for linear stationary system
