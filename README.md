@@ -4,4 +4,4 @@
 * 3 семестр
 * Предмет: Новые информационные технологии
 
-# Reacebilyte set for linear stationary system
+# Reusability set for linear stationary system
