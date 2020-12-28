@@ -1,4 +1,5 @@
 # Восстановление множества опорной функции 
+# Reacebilyte set for linear stationary system
 
 * Магистратура
 * 3 семестр
