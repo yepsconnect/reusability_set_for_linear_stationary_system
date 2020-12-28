@@ -1,13 +1,13 @@
 <html>
     <head>
         <link rel="stylesheet" href="style/style.css">
-        <title>Восстановление множества опорной функции</title>
+        <title>Множество достижимости линейной управляемой системы</title>
     </head>
 
     <body>
         <main>
             <header>
-                <h1 id="title">Восстановление множества опорной функции</h1>
+				<h1 id="title">Множество достижимости линейной управляемой системы</h1>
             </header>
             <article class="block">
                 <section class="inputData">
@@ -16,17 +16,17 @@
                         <div class="boxes">
                             <div class="row">
                                 <input class="inputMatrix" id="inputOne" type="text" placeholder="(1;1)" value="1"> 
-                                <input class="inputMatrix" id="inputTwo" type="text" placeholder="(1;2)" value="2">
+                                <input class="inputMatrix" id="inputTwo" type="text" placeholder="(1;2)" value="-2">
                             </div>
                             <div class="row">
-                                <input class="inputMatrix" id="inputThree" type="text" placeholder="(2;1)" value="-1">
-                                <input class="inputMatrix" id="inputFour" type="text" placeholder="(2;2)" value="0">    
+                                <input class="inputMatrix" id="inputThree" type="text" placeholder="(2;1)" value="2">
+                                <input class="inputMatrix" id="inputFour" type="text" placeholder="(2;2)" value="1">    
                             </div>
                         </div>
                     </div>
                     
                     <div class="box">
-                        <h2>Отрезок</h2>
+                        <h2>Начальное положение</h2>
                         <div class="row">
                             <input class="inputVector" id="inputVectorOne" type="text" placeholder="от"  value="-2">
                             <input class="inputVector" id="inputVectorTwo" type="text" placeholder="до"  value="3">
@@ -48,13 +48,8 @@
                     </div>
                     <!-- pointplot(),console.log(seq2); console.log(seq2[0][1]); -->
                 </section>
-                <button class="create" onclick=" plot2();  plot3()">Построить</button> 
+                <button class="create" onclick="plot2();  plot3()">Построить</button> 
                 <section class="result">
-
-                    <!-- <div style="width: 1000px; max-height: 1000px;">
-                        <canvas id="myChart"></canvas>
-                    </div> -->
-
                     <div style="min-width: 50%">
                         <canvas id="myChart2"></canvas>
                     </div>

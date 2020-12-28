@@ -1,9 +1,11 @@
-var chart = null
-const N = document.querySelector('#firstDot').value
-const t = Math.PI
-const t0 = 0
-const M = 75
-const ds = t/M
+let chart = null
+let N = document.querySelector('#firstDot').value
+let t = document.querySelector('#timeEnd').value
+let t0 = document.querySelector('#timeStart').value
+let M = 75
+let ds = t/M
+let chart2 = null
+let chart3 = null
 
 function showMatrix(){
     let a = document.querySelector('#inputOne').value
@@ -18,9 +20,9 @@ function showMatrix(){
 }
 
 function showVector(){
-    let f = document.querySelector('#inputVectorOne').value
-    let g = document.querySelector('#inputVectorTwo').value
-    let vector = [g, f]
+    let x1 = document.querySelector('#inputVectorOne').value
+    let x2 = document.querySelector('#inputVectorTwo').value
+    let vector = [x1, x2]
     return vector
 }
 
@@ -58,7 +60,12 @@ function PSI(psi, s){
 let seq2 = []
 
 function plot2() { 
-    const N = document.querySelector('#firstDot').value
+    let N = document.querySelector('#firstDot').value
+    let t = document.querySelector('#timeEnd').value
+    let t0 = document.querySelector('#timeStart').value
+    let M = 75
+    let ds = t/M
+
     for (let i = 1; i < N; i++) {
         const DX = []
         const DY = []
@@ -87,11 +94,13 @@ function plot2() {
         seq2.push(P2)
     } 
 
-    if (chart)
-    chart.clear()
+    if (chart2 != null){
+        chart2.destroy()
+    }
+    
     var ctx2 = document.getElementById('myChart2').getContext('2d');
 
-    chart = new Chart(ctx2, {
+    chart2 = new Chart(ctx2, {
         type: 'bubble',
         data: {
             datasets: [{
@@ -118,14 +127,21 @@ function plot2() {
 
 
 function plot3() {
+    let N = document.querySelector('#firstDot').value
+    let t = document.querySelector('#timeEnd').value
+    let t0 = document.querySelector('#timeStart').value
+    let M = 75
+    let ds = t/M
+
     const seq3 = [] 
-    const N = document.querySelector('#firstDot').value
+    let minX
+    let maxX
+    let minY
+    let maxY
+
     for (let i = 1; i < N; i++) {
         const psi = [Math.cos((2 * Math.PI * i) / N), Math.sin((2 * Math.PI * i) / N)]
-        //console.log(psi)
         const D1 = math.multiply(math.multiply(math.expm(math.multiply(showMatrix(),t-t0)),showVector()),psi)
-        //console.log(D1)
-
         let D2 = 0
 
         for(let j = 1; j < M; j++){
@@ -145,63 +161,60 @@ function plot3() {
 
         DC = D1 + D2
 
-        const DX = seq2.map(x => x[0])
+        let DX = seq2.map(x => x[0])
         
-        const minX = DX.reduce((p, n) => {
+        minX = DX.reduce((p, n) => {
             if (p > n) {
                 p = n
             }
             return p
-        }, DX[0]) - 10
+        }, DX[0]) 
 
-        const maxX = DX.reduce((p, n) => {
+        maxX = DX.reduce((p, n) => {
             if (p < n) {
                 p = n
             }
             return p
-        }, DX[0]) + 10
+        }, DX[0]) 
 
-        const DY = seq2.map(x => x[1])
-
-        const minY = DY.reduce((p, n) => {
+        let DY = seq2.map(x => x[1])
+        
+        minY = DY.reduce((p, n) => {
             if (p > n) {
                 p = n
             }
             return p
-        }, DY[0]) - 10
+        }, DY[0]) 
 
-        const maxY = DY.reduce((p, n) => {
+        maxY = DY.reduce((p, n) => {
             if (p < n) {
                 p = n
             }
             return p
-        }, DY[0]) + 10
+        }, DY[0]) 
         
         const plots = []
 
-        for (let x = minX; x < maxX ; x += 10) {
+        for (let x = minX; x < maxX ; x += 2) {
             y = (DC - x * psi[0]) / psi[1]
-            plots.push([x, y])
+            plots.push([x,y])
         }
 
         seq3.push(plots)
-        
     } 
 
-    if (chart)
-    chart.clear()
+    if (chart3 != null){
+        chart3.destroy()
+    }
     var ctx = document.getElementById('myChart3').getContext('2d');
 
-    // console.log(seq2.map(x => x[0]))
-    // console.log(seq2.map(y => y[0]))
-
-    chart = new Chart(ctx, {
+    chart3 = new Chart(ctx, {
         type: 'scatter',
         data: {
             datasets: seq3.map(d => ( {
                 data: d.map((x) => ({
-                    x: x[0],
-                    y: x[1]
+                    x: x[0]+1,
+                    y: x[1]-1
 
                 })),
                 showLine: true,
@@ -219,9 +232,14 @@ function plot3() {
             scales: {
                 yAxes: [{
                     ticks: {
-                        max: 20,
-                        min: 0,
-                        stepSize: 2
+                        max: maxY+2,
+                        min: minY-2,
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        max: maxX+1,
+                        min: minX+1,
                     }
                 }]
             }
