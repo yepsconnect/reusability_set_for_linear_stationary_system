@@ -67,18 +67,18 @@ function calculationOne() {
     let t = document.querySelector('#timeEnd').value
     let t0 = document.querySelector('#timeStart').value
     let M = 75
-    let ds = (t - t0) / M
+    let ds = Math.abs(t - t0) / M
 
     for (let i = 1; i < N; i++) {
         const DX = []
         const DY = []
         const psi = [Math.cos((2 * Math.PI * i) / N), Math.sin((2 * Math.PI * i) / N)]
-        const D1 = math.multiply(math.expm(math.multiply(showMatrix(),t-t0)),showVector())
+        const D1 = math.multiply(math.expm(math.multiply(showMatrix(),Math.abs(t-t0))),showVector())
         const D2 = [0,0]
 
         for(let j = 1; j < M; j++){
-            const p = math.re(PSI(psi, t0 + j * ds))
-            const At = math.multiply(showMatrix(), t - (t0 + j * ds))
+            const p = math.re(PSI(psi, Math.abs(t-t0) + j * ds))
+            const At = math.multiply(showMatrix(), Math.abs(t-t0) - j * ds)
             const exp = math.expm(At)
             const re = math.re(exp)
             const grad = C_analit_grad(p._data[0], p._data[1]) 
@@ -137,17 +137,17 @@ function calculationTwo() {
     let t = document.querySelector('#timeEnd').value
     let t0 = document.querySelector('#timeStart').value
     let M = 75
-    let ds = (t - t0) / M
+    let ds = Math.abs(t - t0) / M
 
     for (let i = 1; i < N; i++) {
         const psi = [Math.cos((2 * Math.PI * i) / N), Math.sin((2 * Math.PI * i) / N)]
-        const D1 = math.multiply(math.multiply(math.expm(math.multiply(showMatrix(),t-t0)),showVector()),psi)
+        const D1 = math.multiply(math.multiply(math.expm(math.multiply(showMatrix(),Math.abs(t-t0))),showVector()),psi)
         let D2 = 0
 
         for(let j = 1; j < M; j++){
             
             const trans = math.transpose(showMatrix())
-            const mul1 = math.multiply(trans, t-t0-ds*j) 
+            const mul1 = math.multiply(trans, Math.abs(t-t0)-ds*j) 
             const exp = math.expm(mul1)
             const mul2 = math.multiply(exp, psi)
             const preRe1 = mul2._data[0]
