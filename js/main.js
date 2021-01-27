@@ -1,18 +1,14 @@
-let chart = null
-let N = document.querySelector('#firstDot').value
-let t = document.querySelector('#timeEnd').value
-let t0 = document.querySelector('#timeStart').value
-let M = 75
-let ds = t/M
+let seq2 = []
+let seq3 = [] 
 let chart2 = null
 let chart3 = null
 
 function showMatrix(){
-    let a = document.querySelector('#inputOne').value
-    let b = document.querySelector('#inputTwo').value
-    let c = document.querySelector('#inputThree').value
-    let d = document.querySelector('#inputFour').value
-    let matrix = [
+    const a = document.querySelector('#inputOne').value
+    const b = document.querySelector('#inputTwo').value
+    const c = document.querySelector('#inputThree').value
+    const d = document.querySelector('#inputFour').value
+    const matrix = [
         [a, b],
         [c ,d]
     ]
@@ -20,9 +16,9 @@ function showMatrix(){
 }
 
 function showVector(){
-    let x1 = document.querySelector('#inputVectorOne').value
-    let x2 = document.querySelector('#inputVectorTwo').value
-    let vector = [x1, x2]
+    const x1 = document.querySelector('#inputVectorOne').value
+    const x2 = document.querySelector('#inputVectorTwo').value
+    const vector = [x1, x2]
     return vector
 }
 
@@ -51,31 +47,34 @@ function C_analit_grad (psi1, psi2){
 }
 
 function PSI(psi, s){
+const t = document.querySelector('#timeEnd').value
     const transposeMatrix = math.transpose(showMatrix())
     const matrix = math.multiply(transposeMatrix, t - s)
     const matrixExp = math.expm(matrix)
+    console.log(math.multiply(matrixExp, psi))
     return math.multiply(matrixExp, psi)
 }
 
-let seq2 = []
+function сalculationsOne() {
+    let chart2 = null
 
-function plot2() { 
-    let N = document.querySelector('#firstDot').value
-    let t = document.querySelector('#timeEnd').value
-    let t0 = document.querySelector('#timeStart').value
-    let M = 75
-    let ds = t/M
-
+    const N = document.querySelector('#firstDot').value
+    const t = document.querySelector('#timeEnd').value
+    const t0 = document.querySelector('#timeStart').value
+    const M = 75
+    const tx = Math.abs( t - t0) 
+    const ds = tx/M 
     for (let i = 1; i < N; i++) {
         const DX = []
         const DY = []
         const psi = [Math.cos((2 * Math.PI * i) / N), Math.sin((2 * Math.PI * i) / N)]
-        const D1 = math.multiply(math.expm(math.multiply(showMatrix(),t-t0)),showVector())
+        console.log(psi)
+        const D1 = math.multiply(math.expm(math.multiply(showMatrix(),t)),showVector())
         const D2 = [0,0]
 
         for(let j = 1; j < M; j++){
-            const p = math.re(PSI(psi, t0 + j * ds))
-            const At = math.multiply(showMatrix(), t - (t0 + j * ds))
+            const p = math.re(PSI(psi, tx + j * ds))
+            const At = math.multiply(showMatrix(), tx - j * ds)
             const exp = math.expm(At)
             const re = math.re(exp)
             const grad = C_analit_grad(p._data[0], p._data[1]) 
@@ -84,34 +83,36 @@ function plot2() {
 
             D2[0] = D2[0] + mulDs._data[0]
             D2[1] = D2[1] + mulDs._data[1]
-
         }
 
         DX[i] = D1._data[0] + D2[0]
         DY[i] = D1._data[1] + D2[1]
         P2 = [DX[i],DY[i]]
-        
         seq2.push(P2)
     } 
+    return seq2
+}
+
+function plotOne () {
+    let seq2 = сalculationsOne()
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
 
     if (chart2 != null){
         chart2.destroy()
     }
-    
-    var ctx2 = document.getElementById('myChart2').getContext('2d');
 
     chart2 = new Chart(ctx2, {
         type: 'bubble',
         data: {
             datasets: [{
-                data: seq2.map((x, y) => ({
+                data: seq2.map((x) => ({
                     x: x[0],
                     y: x[1]
 
                 })),
                 showLine: true,
                 fill: false,
-                borderColor: 'rgb(0, 0, 0)',
+                borderColor: '#FF0000',
                 }]
         },
 
@@ -120,20 +121,30 @@ function plot2() {
                 display: false
             },
             responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        stepSize: 1
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        stepSize: 1
+                    }
+                }]
+            }
         }
     });
 }
 
-
-
-function plot3() {
+function plotTwo() {
+    let chart3 = null
     let N = document.querySelector('#firstDot').value
     let t = document.querySelector('#timeEnd').value
     let t0 = document.querySelector('#timeStart').value
     let M = 75
     let ds = t/M
 
-    const seq3 = [] 
     let minX
     let maxX
     let minY
@@ -246,3 +257,4 @@ function plot3() {
         }
     });
 }
+

@@ -15,12 +15,12 @@
                         <h2 >Матрица</h2>
                         <div class="boxes">
                             <div class="row">
-                                <input class="inputMatrix" id="inputOne" type="text" placeholder="(1;1)" value="1"> 
-                                <input class="inputMatrix" id="inputTwo" type="text" placeholder="(1;2)" value="-2">
+                                <input class="inputMatrix" id="inputOne" type="text" placeholder="(1;1)"> 
+                                <input class="inputMatrix" id="inputTwo" type="text" placeholder="(1;2)">
                             </div>
                             <div class="row">
-                                <input class="inputMatrix" id="inputThree" type="text" placeholder="(2;1)" value="2">
-                                <input class="inputMatrix" id="inputFour" type="text" placeholder="(2;2)" value="1">    
+                                <input class="inputMatrix" id="inputThree" type="text" placeholder="(2;1)">
+                                <input class="inputMatrix" id="inputFour" type="text" placeholder="(2;2)">    
                             </div>
                         </div>
                     </div>
@@ -28,36 +28,29 @@
                     <div class="box">
                         <h2>Начальное положение</h2>
                         <div class="row">
-                            <input class="inputVector" id="inputVectorOne" type="text" placeholder="от"  value="-2">
-                            <input class="inputVector" id="inputVectorTwo" type="text" placeholder="до"  value="3">
+                            <input class="inputVector" id="inputVectorOne" type="text" placeholder="от">
+                            <input class="inputVector" id="inputVectorTwo" type="text" placeholder="до">
                         </div>
                     </div>
                     
                     <div class="box">
                         <h2>Время</h2>
                         <div class="row">
-                            <input class="firstDot" id="timeStart" type="text" placeholder="t0" value="0">
-                            <input class="firstDot" id="timeEnd" type="text" placeholder="t" value="3.14">
+                            <input class="firstDot" id="timeStart" type="text" placeholder="t0">
+                            <input class="firstDot" id="timeEnd" type="text" placeholder="t">
                         </div>
                     </div>
                     <div class="box">
                         <h2>Разбиение </h2>
                         <div class="boxes">
-                            <input class="point" id="firstDot" type="text" placeholder="N" value="32">
+                            <input class="point" id="firstDot" type="text" placeholder="N">
                         </div>
                     </div>
-                    <!-- pointplot(),console.log(seq2); console.log(seq2[0][1]); -->
                 </section>
-                <button class="create" onclick="plot2();  plot3()">Построить</button> 
-                <section class="result">
-                    <div style="min-width: 50%">
-                        <canvas id="myChart2"></canvas>
-                    </div>
-
-                    <div style="min-width: 50%">
-                        <canvas id="myChart3"></canvas>
-                    </div>
-                </section>
+                <button class="create" onclick="plotOne(), plotTwo()">Построить</button> 
+                
+                <canvas id="myChart2"></canvas>
+                <canvas id="myChart3"></canvas>
             </article>
         </main>
     </body>
